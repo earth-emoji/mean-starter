@@ -1,0 +1,18 @@
+
+<form style="margin-top: 70px;" [formGroup]="form" novalidate>
+    <div class="form-group">
+      <label>Task</label>
+      <input type="text" class="form-control" formControlName="task" #task/>
+    </div>
+    <div *ngIf="form.controls['task'].invalid && (form.controls['task'].dirty || form.controls['task'].touched)" class="alert alert-danger">
+      <div *ngIf="form.controls['task'].errors.required">
+        Task is required.
+      </div>
+    </div>
+    <br/>
+    <div class="form-group">
+      <button (click)="addTodo(task.value)"
+      [disabled]="form.pristine || form.invalid" 
+      class="btn btn-primary">Add Todo</button>
+    </div>
+  </form>
